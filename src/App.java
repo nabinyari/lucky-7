@@ -13,11 +13,12 @@ public class App {
        System.out.println(" ");
        System.out.println("How much money does you want to spend?");
        int money = scr.nextInt();
+       
        System.out.println(" ");
        System.out.println(" ");
+       boolean testing = true;
        //int money = 5;
        Scanner scr2 = new Scanner(System.in);
-       String userInput;
        do{
         int ranNum1 = random.nextInt(10)+1;
         System.out.println( ranNum1);
@@ -45,8 +46,30 @@ public class App {
             System.out.println("You lost!");
             money--;
         }
-        System.out.println("Do you want to play again if yes press 'yes' or 'no' for not to play:");
-        userInput = scr2.nextLine();
-       }while(!userInput.equals("no"));
+        if(money == 0)
+        {
+            System.out.println("You don't have enough money to play!");
+            break;
+        }
+        else
+        {
+        System.out.println("Do you want to play again if yes press 'y' or 'n' for not to play:");
+        String userInput = scr2.nextLine();
+        if(userInput.equals("y"))
+        {
+            testing = true;
+        }
+        else if(userInput.equals("n"))
+        {
+            testing = false;
+        }
+        else
+        {
+            System.out.println("You enter wrong value so the game is ended.");
+            testing = false;
+        }
+        }
+        System.out.println("You have " + money +" money left.");
+       }while(testing);
     }
 }
